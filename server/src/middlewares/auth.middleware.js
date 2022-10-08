@@ -1,10 +1,9 @@
+const HttpError = require("http-errors");
 module.exports = function (req, res, next) {
-  // check if user is authinticated
-  const isLoggedIn = true;
-
-  if (!isLoggedIn)
-    return res.status(401).json({
-      error: "You must login",
-    });
+  console.log("///////////////////////");
+  console.log(req.isAuthenticated());
+  if (!req.isAuthenticated()) {
+    next(new HttpError.Unauthorized("You are not logged in"));
+  }
   next();
 };

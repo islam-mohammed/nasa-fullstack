@@ -104,7 +104,8 @@ const Header = (props) => {
             </Highlight>
           </Clickable>
 
-          <a href="https://localhost:8000/auth/google">Google</a>
+          <a href="/auth/google">Google</a>
+          <a href="/auth/logout">Logout</a>
         </nav>
       </Centered>
     </ArwesHeader>

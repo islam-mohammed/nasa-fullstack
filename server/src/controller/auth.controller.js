@@ -1,7 +1,8 @@
-function googleLoginHandler(req, res) {}
-function logout(req, res) {}
+function logout(req, res) {
+  req.logout();
+  return res.redirect("/");
+}
 
 module.exports = {
-  googleLoginHandler,
   logout,
 };

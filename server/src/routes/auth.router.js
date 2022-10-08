@@ -4,18 +4,12 @@ const { logout } = require("../controller/auth.controller");
 
 const authRouter = express.Router();
 
+authRouter.get("/google", passport.authenticate("google"));
 authRouter.get(
   "/google/callback",
   passport.authenticate("google", {
-    failuerRedirect: "/failuer",
+    failureRedirect: "/failuer",
     successRedirect: "/",
-    session: false,
-  })
-);
-authRouter.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: ["email"],
   })
 );
 authRouter.get("/logout", logout);
