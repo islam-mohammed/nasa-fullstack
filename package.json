@@ -16,9 +16,5 @@
   },
   "author": "Islam Mohammed",
   "license": "ISC",
-  "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "http-errors": "^2.0.0",
-    "passport": "^0.5.3"
-  }
+  "dependencies": {}
 }
