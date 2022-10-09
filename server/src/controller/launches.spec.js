@@ -1,11 +1,15 @@
 const request = require("supertest");
 const app = require("../app");
+const { loadSpaceXData } = require("../models/launches.model");
+const { loadPlanetData } = require("../models/planets.model");
 
 const { dbConnect, dbDisconnect } = require("../mongo");
 
 describe("Launches API", () => {
   beforeAll(async () => {
     await dbConnect();
+    await loadPlanetData();
+    await loadSpaceXData();
   });
 
   afterAll(async () => {
