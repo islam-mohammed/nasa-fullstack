@@ -2,9 +2,7 @@ const request = require("supertest");
 const app = require("../app");
 const { loadSpaceXData } = require("../models/launches.model");
 const { loadPlanetData } = require("../models/planets.model");
-
-const { dbConnect, dbDisconnect } = require("../mongo");
-
+const { dbConnect, dbDisconnect } = require("../services/mongo");
 describe("Launches API", () => {
   beforeAll(async () => {
     await dbConnect();
@@ -25,12 +23,12 @@ describe("Launches API", () => {
     });
   });
   describe("Test POST /launches", () => {
-    test("it should repond with 201 success", async () => {
+    test("it should respond with 201 success", async () => {
       await request(app)
         .post("/api/launches")
         .send({
           launchDate: new Date("2022-09-30T00:00:00.000Z"),
-          mission: "asdfasdfasdfsadf",
+          mission: "Mission",
           rocket: "Explorer IS1",
           target: "Kepler-1652 b",
         })
@@ -105,7 +103,7 @@ describe("Launches API", () => {
   });
   describe("Test DELETE /launches", () => {
     test("it should return 200 sucess", async () => {
-      await request(app).delete("/api/launches/101").expect(200);
+      await request(app).delete("/api/launches/103").expect(200);
     });
     test("it should catch invalid flight nomber", async () => {
       await request(app).delete("/api/launches/999999999999999").expect(404);
